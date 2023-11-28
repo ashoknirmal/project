@@ -1,0 +1,46 @@
+#include <stdio.h>
+struct student
+{
+
+    int rollno;
+    struct DOB
+    {
+        int date;
+        int month;
+        int year;
+    }d;
+    int mark1;
+    int mark2;
+    int totalmark;
+    float avg;
+}s[10],t;
+int main()
+{
+
+    for(int i=0;i<10;i++)
+    {
+        scanf("%d %d %d %d %d %d",&s[i].rollno,&s[i].d.date,&s[i].d.month,&s[i].d.year,&s[i].mark1,&s[i].mark2);
+    }
+    for(int i=0;i<10;i++)
+    {
+        s[i].totalmark=s[i].mark1+s[i].mark2;
+        s[i].avg=s[i].totalmark/2;
+    }
+    for(int i=0;i<10;i++)
+    {
+        for(int j=i+1;j<8;j++)
+        {
+            if(s[i].avg>s[j].avg)
+            {
+                t = s[i];
+                s[i] = s[j];
+                s[j] = t;
+            }
+        }}
+    printf("rollno date/month/year mark1 mark2 totalmark avgmark\n");
+    for(int i=0;i<8;i++)
+    {
+        printf("%d     %d/%d/%d      %d      %d      %d         %0.2f\n",s[i].rollno,s[i].d.date,s[i].d.month,s[i].d.year,s[i].mark1,s[i].mark2,s[i].totalmark,s[i].avg);
+    }
+    return 0;
+}
